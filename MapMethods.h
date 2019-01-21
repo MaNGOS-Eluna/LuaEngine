@@ -340,7 +340,7 @@ namespace LuaMap
     */
     int GetPlayers(lua_State* L, Map* map)
     {
-        uint32 team = Eluna::CHECKVAL<uint32>(L, 2, TEAM_NEUTRAL);
+        //uint32 team = Eluna::CHECKVAL<uint32>(L, 2, TEAM_NEUTRAL);
 
         lua_newtable(L);
         int tbl = lua_gettop(L);
@@ -356,11 +356,11 @@ namespace LuaMap
 #endif
             if (!player)
                 continue;
-            if (player->GetSession() && (team >= TEAM_NEUTRAL || player->GetTeamId() == team))
+          /*  if (player->GetSession() && (team >= TEAM_NEUTRAL || player->GetTeamId() == team))
             {
                 Eluna::Push(L, player);
                 lua_rawseti(L, tbl, ++i);
-            }
+            }*/
         }
 
         lua_settop(L, tbl);

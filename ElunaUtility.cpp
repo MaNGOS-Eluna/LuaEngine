@@ -54,8 +54,8 @@ ElunaUtil::WorldObjectInRangeCheck::WorldObjectInRangeCheck(bool nearest, WorldO
     if (!i_obj_unit)
         if (GameObject const* go = i_obj->ToGameObject())
             i_obj_unit = go->GetOwner();
-    if (!i_obj_unit)
-        i_obj_fact = sFactionTemplateStore.LookupEntry(14);
+    //if (!i_obj_unit)
+        //i_obj_fact = sFactionTemplateStore.LookupEntry(14);
 }
 WorldObject const& ElunaUtil::WorldObjectInRangeCheck::GetFocusObject() const
 {
@@ -81,8 +81,8 @@ bool ElunaUtil::WorldObjectInRangeCheck::operator()(WorldObject* u)
         if (i_dead && (i_dead == 1) != target->isAlive())
             return false;
 #else
-        if (i_dead && (i_dead == 1) != target->IsAlive())
-            return false;
+ /*       if (i_dead && (i_dead == 1) != target->IsAlive())
+            return false;*/
 #endif
         if (i_hostile)
         {

@@ -26,14 +26,14 @@ namespace LuaGuild
         uint32 i = 0;
 
 #if defined(MANGOS) && defined(CLASSIC)
-        eObjectAccessor()DoForAllPlayers([&](Player* player)
-        {
-            if (player->IsInWorld() && player->GetGuildId() == guild->GetId())
-            {
-                Eluna::Push(L, player);
-                lua_rawseti(L, tbl, ++i);
-            }
-        });
+        //eObjectAccessor()DoForAllPlayers([&](Player* player)
+        //{
+        //    if (player->IsInWorld() && player->GetGuildId() == guild->GetId())
+        //    {
+        //        Eluna::Push(L, player);
+        //        lua_rawseti(L, tbl, ++i);
+        //    }
+        //});
 #else
         {
 #ifdef TRINITY

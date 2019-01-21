@@ -57,7 +57,7 @@ namespace LuaCreature
         bool mustBeDead = Eluna::CHECKVAL<bool>(L, 2, false);
 
 #ifdef MANGOS
-        Eluna::Push(L, creature->IsTargetableForAttack(mustBeDead));
+        //Eluna::Push(L, creature->IsTargetableForAttack(mustBeDead));
 #else
         Eluna::Push(L, creature->isTargetableForAttack(mustBeDead));
 #endif
@@ -272,7 +272,7 @@ namespace LuaCreature
         else
             Eluna::Push(L, false);
 #else
-        Eluna::Push(L, creature->HasCategoryCooldown(spell));
+        //Eluna::Push(L, creature->HasCategoryCooldown(spell));
 #endif
         return 1;
     }
@@ -598,7 +598,7 @@ namespace LuaCreature
         else
             Eluna::Push(L, 0);
 #else
-        Eluna::Push(L, creature->GetCreatureSpellCooldownDelay(spell));
+        //Eluna::Push(L, creature->GetCreatureSpellCooldownDelay(spell));
 #endif
         return 1;
     }
@@ -658,7 +658,7 @@ namespace LuaCreature
 #if defined TRINITY || AZEROTHCORE
         creature->SetHomePosition(x, y, z, o);
 #else
-        creature->SetRespawnCoord(x, y, z, o);
+        //creature->SetRespawnCoord(x, y, z, o);
 #endif
 
         return 0;
@@ -711,7 +711,7 @@ namespace LuaCreature
         ThreatList const& threatlist = creature->getThreatManager().getThreatList();
 #endif
 #ifdef MANGOS
-        ThreatList const& threatlist = creature->GetThreatManager().getThreatList();
+     /*   ThreatList const& threatlist = creature->GetThreatManager().getThreatList();*/
 #endif
 #ifdef TRINITY
         auto const& threatlist = creature->GetThreatManager().GetThreatenedByMeList();
@@ -720,13 +720,13 @@ namespace LuaCreature
         auto const& threatlist = creature->getThreatManager().getThreatList();
 #endif
 
-        if (threatlist.empty())
-            return 1;
-        if (position >= threatlist.size())
-            return 1;
+        //if (threatlist.empty())
+        //    return 1;
+    /*    if (position >= threatlist.size())
+            return 1;*/
 
         std::list<Unit*> targetList;
-        for (auto itr = threatlist.begin(); itr != threatlist.end(); ++itr)
+       /* for (auto itr = threatlist.begin(); itr != threatlist.end(); ++itr)
         {
 #ifdef TRINITY
             Unit* target = itr->second->GetOwner();
@@ -747,7 +747,7 @@ namespace LuaCreature
                 continue;
             targetList.push_back(target);
         }
-
+*/
         if (targetList.empty())
             return 1;
         if (position >= targetList.size())
@@ -806,23 +806,23 @@ namespace LuaCreature
 #elif defined AZEROTHCORE
 auto const& threatlist = creature->getThreatManager().getThreatList();
 #else
-        ThreatList const& threatlist = creature->GetThreatManager().getThreatList();
+       /* ThreatList const& threatlist = creature->GetThreatManager().getThreatList();*/
 #endif
-        lua_createtable(L, threatlist.size(), 0);
+        //lua_createtable(L, threatlist.size(), 0);
         int tbl = lua_gettop(L);
         uint32 i = 0;
-        for (auto itr = threatlist.begin(); itr != threatlist.end(); ++itr)
-        {
-#ifdef TRINITY
-            Unit* target = itr->second->GetOwner();
-#else
-            Unit* target = (*itr)->getTarget();
-#endif
-            if (!target)
-                continue;
-            Eluna::Push(L, target);
-            lua_rawseti(L, tbl, ++i);
-        }
+//        for (auto itr = threatlist.begin(); itr != threatlist.end(); ++itr)
+//        {
+//#ifdef TRINITY
+//            Unit* target = itr->second->GetOwner();
+//#else
+//            Unit* target = (*itr)->getTarget();
+//#endif
+//            if (!target)
+//                continue;
+//            Eluna::Push(L, target);
+//            lua_rawseti(L, tbl, ++i);
+//        }
 
         lua_settop(L, tbl);
         return 1;
@@ -840,7 +840,7 @@ auto const& threatlist = creature->getThreatManager().getThreatList();
 #elif AZEROTHCORE
         Eluna::Push(L, creature->getThreatManager().getThreatList().size());
 #else
-        Eluna::Push(L, creature->GetThreatManager().getThreatList().size());
+        //Eluna::Push(L, creature->GetThreatManager().getThreatList().size());
 #endif
         return 1;
     }
@@ -1380,8 +1380,8 @@ auto const& threatlist = creature->getThreatManager().getThreatList();
             Eluna::Push(L, cInfo->family);
 #else
         CreatureInfo const* cInfo = ObjectMgr::GetCreatureTemplate(entry);
-        if (cInfo)
-            Eluna::Push(L, cInfo->Family);
+ /*       if (cInfo)
+            Eluna::Push(L, cInfo->Family);*/
 #endif
         return 1;
     }

@@ -106,7 +106,7 @@ void Eluna::OnPacketReceiveAny(Player* player, WorldPacket& packet, bool& result
 
         if (lua_isuserdata(L, r + 1))
             if (WorldPacket* data = CHECKOBJ<WorldPacket>(L, r + 1, false))
-                packet = *data;
+                //packet = *data;
 
         lua_pop(L, 2);
     }
@@ -130,7 +130,7 @@ void Eluna::OnPacketReceiveOne(Player* player, WorldPacket& packet, bool& result
 
         if (lua_isuserdata(L, r + 1))
             if (WorldPacket* data = CHECKOBJ<WorldPacket>(L, r + 1, false))
-                packet = *data;
+                //packet = *data;
 
         lua_pop(L, 2);
     }

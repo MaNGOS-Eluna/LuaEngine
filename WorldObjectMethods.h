@@ -778,7 +778,7 @@ namespace LuaWorldObject
 #if defined TRINITY || AZEROTHCORE
                 type = TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT;
 #else
-                type = TEMPSUMMON_TIMED_OOC_DESPAWN;
+                //type = TEMPSUMMON_TIMED_OOC_DESPAWN;
 #endif
                 break;
             case 5:
@@ -795,10 +795,10 @@ namespace LuaWorldObject
                 break;
 #if !defined TRINITY && !AZEROTHCORE
             case 9:
-                type = TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN;
+                //type = TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN;
                 break;
             case 10:
-                type = TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN;
+                //type = TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN;
                 break;
 #endif
             default:
@@ -1089,7 +1089,7 @@ namespace LuaWorldObject
         float arc = Eluna::CHECKVAL<float>(L, 3, static_cast<float>(M_PI));
 
 #ifdef MANGOS
-        Eluna::Push(L, obj->IsInFront(target, arc));
+        //Eluna::Push(L, obj->IsInFront(target, arc));
 #else
         Eluna::Push(L, obj->isInFront(target, arc));
 #endif
@@ -1109,7 +1109,7 @@ namespace LuaWorldObject
         float arc = Eluna::CHECKVAL<float>(L, 3, static_cast<float>(M_PI));
 
 #ifdef MANGOS
-        Eluna::Push(L, obj->IsInBack(target, arc));
+        //Eluna::Push(L, obj->IsInBack(target, arc));
 #else
         Eluna::Push(L, obj->isInBack(target, arc));
 #endif
@@ -1163,7 +1163,7 @@ namespace LuaWorldObject
     {
         uint32 soundId = Eluna::CHECKVAL<uint32>(L, 2);
         Player* player = Eluna::CHECKOBJ<Player>(L, 3, false);
-        if (!sSoundEntriesStore.LookupEntry(soundId))
+        //if (!sSoundEntriesStore.LookupEntry(soundId))
             return 0;
 
         if (player)
@@ -1189,7 +1189,7 @@ namespace LuaWorldObject
     {
         uint32 soundId = Eluna::CHECKVAL<uint32>(L, 2);
         Player* player = Eluna::CHECKOBJ<Player>(L, 3, false);
-        if (!sSoundEntriesStore.LookupEntry(soundId))
+        //if (!sSoundEntriesStore.LookupEntry(soundId))
             return 0;
 
         if (player)

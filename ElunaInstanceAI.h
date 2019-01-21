@@ -80,7 +80,7 @@ public:
     }
     const char* Save() const;
 #else
-    const char* Save() const override;
+    const char* Save() const ;
 #endif
 
 
@@ -98,10 +98,10 @@ public:
     /*
      * These methods allow non-Lua scripts (e.g. DB, C++) to get/set instance data.
      */
-    uint32 GetData(uint32 key) const override;
+    uint32 GetData(uint32 key) const ;
     void SetData(uint32 key, uint32 value) override;
 
-    uint64 GetData64(uint32 key) const override;
+    uint64 GetData64(uint32 key) const ;
     void SetData64(uint32 key, uint64 value) override;
 
     /*

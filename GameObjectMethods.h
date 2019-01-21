@@ -132,7 +132,7 @@ namespace LuaGameObject
      */
     int GetLootRecipient(lua_State* L, GameObject* go)
     {
-        Eluna::Push(L, go->GetLootRecipient());
+        //Eluna::Push(L, go->GetLootRecipient());
         return 1;
     }
 
@@ -148,7 +148,7 @@ namespace LuaGameObject
 #if defined TRINITY || AZEROTHCORE
         Eluna::Push(L, go->GetLootRecipientGroup());
 #else
-        Eluna::Push(L, go->GetGroupLootRecipient());
+        //Eluna::Push(L, go->GetGroupLootRecipient());
 #endif
         return 1;
     }

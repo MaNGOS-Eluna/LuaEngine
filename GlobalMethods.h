@@ -51,7 +51,7 @@ namespace LuaGlobalFunctions
      */
     int GetCoreVersion(lua_State* L)
     {
-        Eluna::Push(L, CORE_VERSION);
+        //Eluna::Push(L, CORE_VERSION);
         return 1;
     }
 
@@ -149,7 +149,7 @@ namespace LuaGlobalFunctions
      */
     int GetPlayersInWorld(lua_State* L)
     {
-        uint32 team = Eluna::CHECKVAL<uint32>(L, 1, TEAM_NEUTRAL);
+        /*uint32 team = Eluna::CHECKVAL<uint32>(L, 1, TEAM_NEUTRAL);*/
         bool onlyGM = Eluna::CHECKVAL<bool>(L, 2, false);
 
         lua_newtable(L);
@@ -157,7 +157,7 @@ namespace LuaGlobalFunctions
         uint32 i = 0;
 
 #if defined(MANGOS) && defined(CLASSIC)
-        eObjectAccessor()DoForAllPlayers([&](Player* player){
+ /*       eObjectAccessor()DoForAllPlayers([&](Player* player){
             if(player->IsInWorld())
             {
                 if ((team == TEAM_NEUTRAL || player->GetTeamId() == team) && (!onlyGM || player->isGameMaster()))
@@ -166,7 +166,7 @@ namespace LuaGlobalFunctions
                     lua_rawseti(L, tbl, ++i);
                 }
             }
-        });
+        });*/
 #else
         {
 #ifdef TRINITY
@@ -1557,7 +1557,7 @@ namespace LuaGlobalFunctions
                     }
                 }
 
-                pCreature->SetRespawnCoord(pos);
+               /* pCreature->SetRespawnCoord(pos);*/
 
                 // Active state set before added to map
                 pCreature->SetActiveObjectState(false);
@@ -1850,12 +1850,12 @@ namespace LuaGlobalFunctions
         eObjectMgr->AddVendorItem(entry, item, maxcount, incrtime, extendedcost);
 #endif
 #else
-        if (!eObjectMgr->IsVendorItemValid(false, "npc_vendor", entry, item, maxcount, incrtime, extendedcost, 0))
-            return 0;
+        //if (!eObjectMgr->IsVendorItemValid(false, "npc_vendor", entry, item, maxcount, incrtime, extendedcost, 0))
+        //    return 0;
 #ifndef CLASSIC
         eObjectMgr->AddVendorItem(entry, item, maxcount, incrtime, extendedcost);
 #else
-        eObjectMgr->AddVendorItem(entry, item, maxcount, incrtime);
+        //eObjectMgr->AddVendorItem(entry, item, maxcount, incrtime);
 #endif
 #endif//TRINITY
         return 0;
@@ -2310,7 +2310,7 @@ namespace LuaGlobalFunctions
             nodeEntry->z = entry.z;
             nodeEntry->MountCreatureID[0] = mountH;
             nodeEntry->MountCreatureID[1] = mountA;
-            sTaxiNodesStore.SetEntry(nodeId++, nodeEntry);
+            //sTaxiNodesStore.SetEntry(nodeId++, nodeEntry);
 #ifndef AZEROTHCORE
             sTaxiPathNodesByPath[pathId].set(index++, new TaxiPathNodeEntry(entry));
 #else
@@ -2326,7 +2326,7 @@ namespace LuaGlobalFunctions
         pathEntry->to = nodeId - 1;
         pathEntry->ID = pathId;
         pathEntry->price = price;
-        sTaxiPathStore.SetEntry(pathId, pathEntry);
+      /*  sTaxiPathStore.SetEntry(pathId, pathEntry);*/
         Eluna::Push(L, pathId);
         return 1;
     }

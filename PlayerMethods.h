@@ -1,4 +1,4 @@
-﻿/*
+/*
 * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
 * This program is free software licensed under GPL version 3
 * Please see the included DOCS/LICENSE.md for more information
@@ -258,7 +258,7 @@ namespace LuaPlayer
      */
     int CanUninviteFromGroup(lua_State* L, Player* player)
     {
-        Eluna::Push(L, player->CanUninviteFromGroup() == ERR_PARTY_RESULT_OK);
+        //Eluna::Push(L, player->CanUninviteFromGroup() == ERR_PARTY_RESULT_OK);
         return 1;
     }
 
@@ -284,9 +284,9 @@ namespace LuaPlayer
      */
     int GetHonorStoredKills(lua_State* L, Player* player)
     {
-        bool honorable = Eluna::CHECKVAL<bool>(L, 2, true);
+        //bool honorable = Eluna::CHECKVAL<bool>(L, 2, true);
 
-        Eluna::Push(L, player->GetHonorStoredKills(honorable));
+        //Eluna::Push(L, player->GetHonorStoredKills(honorable));
         return 1;
     }
 
@@ -331,7 +331,7 @@ namespace LuaPlayer
      */
     int IsMoving(lua_State* L, Player* player) // enable for unit when mangos support it
     {
-        Eluna::Push(L, player->isMoving());
+        //Eluna::Push(L, player->isMoving());
         return 1;
     }
 
@@ -597,7 +597,7 @@ namespace LuaPlayer
     int IsTaxiCheater(lua_State* L, Player* player)
     {
 #ifdef MANGOS
-        Eluna::Push(L, player->IsTaxiCheater());
+        //Eluna::Push(L, player->IsTaxiCheater());
 #else
         Eluna::Push(L, player->isTaxiCheater());
 #endif
@@ -617,7 +617,7 @@ namespace LuaPlayer
      */
     int IsAcceptingWhispers(lua_State* L, Player* player)
     {
-        Eluna::Push(L, player->isAcceptWhispers());
+        //Eluna::Push(L, player->isAcceptWhispers());
         return 1;
     }
 
@@ -1106,7 +1106,7 @@ namespace LuaPlayer
      */
     int GetManaBonusFromIntellect(lua_State* L, Player* player)
     {
-        Eluna::Push(L, player->GetManaBonusFromIntellect());
+        //Eluna::Push(L, player->GetManaBonusFromIntellect());
         return 1;
     }
 
@@ -1117,7 +1117,7 @@ namespace LuaPlayer
      */
     int GetHealthBonusFromStamina(lua_State* L, Player* player)
     {
-        Eluna::Push(L, player->GetHealthBonusFromStamina());
+        //Eluna::Push(L, player->GetHealthBonusFromStamina());
         return 1;
     }
 
@@ -1323,7 +1323,7 @@ namespace LuaPlayer
      */
     int GetChatTag(lua_State* L, Player* player)
     {
-        Eluna::Push(L, player->GetChatTag());
+        //Eluna::Push(L, player->GetChatTag());
         return 1;
     }
 
@@ -1772,8 +1772,8 @@ namespace LuaPlayer
         uint32 faction = Eluna::CHECKVAL<uint32>(L, 2);
         int32 value = Eluna::CHECKVAL<int32>(L, 3);
 
-        FactionEntry const* factionEntry = sFactionStore.LookupEntry(faction);
-        player->GetReputationMgr().SetReputation(factionEntry, value);
+        //FactionEntry const* factionEntry = sFactionStore.LookupEntry(faction);
+        //player->GetReputationMgr().SetReputation(factionEntry, value);
         return 0;
     }
 
@@ -1912,7 +1912,7 @@ namespace LuaPlayer
 
         player->SetByteValue(UNIT_FIELD_BYTES_0, 2, gender);
         player->SetByteValue(PLAYER_BYTES_3, 0, gender);
-        player->InitDisplayIds();
+        //player->InitDisplayIds();
         return 0;
     }
 
@@ -1954,7 +1954,7 @@ namespace LuaPlayer
         uint32 kills = Eluna::CHECKVAL<uint32>(L, 2);
         bool honorable = Eluna::CHECKVAL<bool>(L, 3, true);
 
-        player->SetHonorStoredKills(kills, honorable);
+        //player->SetHonorStoredKills(kills, honorable);
         return 0;
     }
 
@@ -1967,7 +1967,7 @@ namespace LuaPlayer
     {
         float rankPoints = Eluna::CHECKVAL<float>(L, 2);
 
-        player->SetRankPoints(rankPoints);
+        //player->SetRankPoints(rankPoints);
         return 0;
     }
 
@@ -1980,7 +1980,7 @@ namespace LuaPlayer
     {
         int32 standingPos = Eluna::CHECKVAL<int32>(L, 2);
 
-        player->SetHonorLastWeekStandingPos(standingPos);
+        //player->SetHonorLastWeekStandingPos(standingPos);
         return 0;
     }
 #endif
@@ -2883,9 +2883,9 @@ namespace LuaPlayer
         {
             uint32 repValue = quest->GetRepObjectiveValue();
             uint32 curRep = player->GetReputationMgr().GetReputation(repFaction);
-            if (curRep < repValue)
-                if (FactionEntry const* factionEntry = sFactionStore.LookupEntry(repFaction))
-                    player->GetReputationMgr().SetReputation(factionEntry, repValue);
+            //if (curRep < repValue)
+                //if (FactionEntry const* factionEntry = sFactionStore.LookupEntry(repFaction))
+                //    player->GetReputationMgr().SetReputation(factionEntry, repValue);
         }
 
 #if defined TRINITY || AZEROTHCORE
@@ -3005,7 +3005,7 @@ namespace LuaPlayer
                 player->SetQuestSlot(slot, 0);
 
                 // we ignore unequippable quest items in this case, its' still be equipped
-                player->TakeQuestSourceItem(logQuest, false);
+                //player->TakeQuestSourceItem(logQuest, false);
 
 #if defined TRINITY || AZEROTHCORE
                 if (quest->HasFlag(QUEST_FLAGS_FLAGS_PVP))
@@ -3050,7 +3050,7 @@ namespace LuaPlayer
 #ifdef TRINITY
         player->Whisper(text, (Language)lang, receiver);
 #else
-        player->Whisper(text, lang, ObjectGuid(guid));
+        //player->Whisper(text, lang, ObjectGuid(guid));
 #endif
         return 0;
     }
@@ -3678,8 +3678,8 @@ namespace LuaPlayer
 
 #if !defined TRINITY && !AZEROTHCORE
         // if player has a pet, update owner talent auras
-        if (player->GetPet())
-            player->GetPet()->CastOwnerTalentAuras();
+        //if (player->GetPet())
+        //    player->GetPet()->CastOwnerTalentAuras();
 #endif
         return 0;
     }
@@ -3899,7 +3899,7 @@ namespace LuaPlayer
     int RemovedInsignia(lua_State* L, Player* player)
     {
         Player* looter = Eluna::CHECKOBJ<Player>(L, 2);
-        player->RemovedInsignia(looter);
+        //player->RemovedInsignia(looter);
         return 0;
     }
 

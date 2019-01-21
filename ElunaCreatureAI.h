@@ -203,7 +203,7 @@ struct ElunaCreatureAI : ScriptedAI
 
 #if !defined TRINITY && !AZEROTHCORE
     // Enables use of MoveInLineOfSight
-    bool IsVisible(Unit* who) const override
+    bool IsVisible(Unit* who) const 
     {
         return true;
     }
